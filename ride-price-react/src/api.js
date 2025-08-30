@@ -6,12 +6,15 @@
 export async function getRideDetailsFromAI(text, apiKey) {
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
     
-    const systemPrompt = `You are a location extractor for a ride service based in Buffalo, NY.
-- All ride requests will be for locations within New York State, primarily in the Western New York area.
-- Extract the starting point, destination, and time from the user's request.
-- Return ONLY a valid JSON object.
-- If a value cannot be found, the JSON value MUST be null.
-- Example: {"start": "UB North Campus", "end": "Buffalo Airport", "time": "10:00 AM"}`;
+    const systemPrompt = `You are an intelligent assistant for a ride-sharing app. Your task is to parse a user's ride request and return structured data.
+                - Extract the starting point, final destination, and time of the ride.
+                - CRITICALLY, you MUST also estimate the driving distance in miles and the travel time in minutes for a ONE-WAY trip.
+                - If the user mentions "round trip" or "return journey", IGNORE it. Your estimates for distance and time MUST be for a single, one-way journey. The app's UI will handle doubling the values.
+                - Return ONLY a valid JSON object.
+		- If a value cannot be found, the JSON value MUST be null.
+                - For locations like "airport" or "south campus", assume a major, well-known location in a typical US city (e.g., Buffalo Niagara International Airport, University at Buffalo South Campus).
+                - Base your distance and time estimations on standard driving routes.
+		- Example: {"start": "UB North Campus", "end": "Buffalo Airport", "time": "10:00 AM"}`;
 
     const payload = {
         contents: [{ parts: [{ text }] }],
@@ -34,3 +37,5 @@ export async function getRideDetailsFromAI(text, apiKey) {
         throw new Error("Received invalid response from AI.");
     }
 }
+
+
