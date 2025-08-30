@@ -25,7 +25,7 @@ function ResultsDisplay({ data }) {
             <h2 className="text-2xl font-bold text-center mb-6">Pricing Options</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                 {prices.map(option => {
-                    const profit = option.fare - rideDetails.totalGasCost;
+                    const profit = option.price - rideDetails.totalGasCost;
                     return <PriceCard key={option.name} {...option} profit={profit} cost={rideDetails.totalGasCost} />;
                 })}
             </div>
