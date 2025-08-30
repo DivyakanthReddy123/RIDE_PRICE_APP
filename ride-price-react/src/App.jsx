@@ -107,7 +107,7 @@ function App() {
             const prices = [
                 { name: 'Budget', price: baseFare + (1.50 * distanceInMiles) + airportSurcharge, color: 'green' },
                 { name: 'Standard',   price: baseFare + (1.65 * distanceInMiles) + airportSurcharge, color: 'blue' },
-                { name: 'Premium',    price: baseFare + (1.80 * distanceInMiles) + airportSurcharge, color: 'purple' }
+                { name: 'Premium',    price: baseFare + ( 2 * distanceInMiles) + airportSurcharge, color: 'purple' }
             ];
 
             setResults({ rideDetails, prices, directionsResult });

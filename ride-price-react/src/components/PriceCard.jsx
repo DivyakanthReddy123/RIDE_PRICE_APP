@@ -14,7 +14,7 @@ function PriceCard({ name, price, profit, cost, color }) {
             <p className="text-3xl font-extrabold text-gray-900 my-3">${price.toFixed(2)}</p>
             <div className="text-left space-y-1 text-sm">
                 <p className="flex justify-between">
-                    <span>Your Profit:</span> 
+                    <span>Profit:</span> 
                     <span className="font-medium text-green-600">${profit.toFixed(2)}</span>
                 </p>
                 <p className="flex justify-between border-t pt-1">
