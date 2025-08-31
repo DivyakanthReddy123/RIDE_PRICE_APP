@@ -146,7 +146,7 @@ function InputForm({ inputs, setInputs, onCalculate, isLoading }) {
     return (
 
 
-        <div className="space-y-6" style={{ position: 'relative', minHeight: '100vh' }}>
+        <div className="space-y-6" style={{ position: 'relative' }}>
             {/* Rays animated background */}
             {/* <Rays style={{
                     position: "fixed",
