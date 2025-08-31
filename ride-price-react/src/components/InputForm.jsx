@@ -1,4 +1,5 @@
 import React from 'react';
+import Rays from './Rays'; // adjust path as needed, e.g., '../components/Rays'
 
 
 
@@ -143,7 +144,30 @@ function InputForm({ inputs, setInputs, onCalculate, isLoading }) {
     };
 
     return (
-        <div className="space-y-6">
+
+
+        <div className="space-y-6" style={{ position: 'relative', minHeight: '100vh' }}>
+            {/* Rays animated background */}
+            {/* <Rays style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100vw",
+                    height: "100vh",
+                    zIndex: -1,
+                    pointerEvents: "none"
+                }}
+                backgroundColor="#0a1737" // deep navy blue
+                raysColor={{ mode: "single", color: "#67bfff" }} // soft bright blue
+                intensity={55}    // softer
+                rays={38}         // more rays for smoothness
+                reach={60}        // longer reach
+                position={0}      // far left (for top left rays)
+                animation={{ animate: true, speed: 12 }}
+                radius="0px"
+                /> */}
+
+
             <div>
                 <label htmlFor="rideText" className="block text-sm font-medium text-gray-700 mb-1">Ride Request Message</label>
                 <textarea
