@@ -50,9 +50,6 @@ function App() {
         setResults(null);
 
         try {
-            // ... (Calculation logic will go here)
-            // For now, let's copy the logic from our old main.js
-            
             let aiResponse = { start: null, end: null, time: null };
             if (inputs.rideText && !inputs.startPointInput && !inputs.destinationInput) {
                 aiResponse = await getRideDetailsFromAI(inputs.rideText, GEMINI_API_KEY);
@@ -86,29 +83,26 @@ function App() {
             const distanceInMiles = leg.distance.value * 0.000621371;
             const durationInMinutes = Math.round(leg.duration.value / 60);
 
-            let displayDistance = distanceInMiles;
-            let displayTime = durationInMinutes;
-            if (inputs.roundTripCheck) {
-                displayDistance *= 2;
-                displayTime *= 2;
-            }
+            const tripDistance = inputs.roundTripCheck ? distanceInMiles * 2 : distanceInMiles;
+            const displayTime = inputs.roundTripCheck ? durationInMinutes * 2 : durationInMinutes;
 
             const totalGasCost = distanceInMiles * (parseFloat(inputs.gasPrice) / parseFloat(inputs.mileage)) * 2;
             
             const baseFare = 3.00;
             const airportSurcharge = endPointText.toLowerCase().includes('airport') ? 5.00 : 0;
 
+            const prices = [
+                { name: 'Budget', price: baseFare + (1.50 * tripDistance) + airportSurcharge, color: 'green' },
+                { name: 'Standard',   price: baseFare + (1.65 * tripDistance) + airportSurcharge, color: 'blue' },
+                { name: 'Premium',    price: baseFare + ( 2 * tripDistance) + airportSurcharge, color: 'purple' }
+            ];
+
             const rideDetails = {
                 startPointText, endPointText,
                 time: aiResponse.time || 'ASAP',
-                displayDistance, displayTime, totalGasCost
+                displayDistance: tripDistance,
+                displayTime, totalGasCost
             };
-            
-            const prices = [
-                { name: 'Budget', price: baseFare + (1.50 * distanceInMiles) + airportSurcharge, color: 'green' },
-                { name: 'Standard',   price: baseFare + (1.65 * distanceInMiles) + airportSurcharge, color: 'blue' },
-                { name: 'Premium',    price: baseFare + ( 2 * distanceInMiles) + airportSurcharge, color: 'purple' }
-            ];
 
             setResults({ rideDetails, prices, directionsResult });
 
@@ -135,14 +129,17 @@ function App() {
                     isLoading={isLoading}
                 />
                 
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                    {isLoading && <div className="loader"></div>}
-                    {error && <div className="text-red-500 text-center p-4 bg-red-100 rounded-lg">{error}</div>}
-                    {results && <ResultsDisplay data={results} />}
-                </div>
+                {(isLoading || error || results) && (
+                    <div className="mt-8 pt-6 border-t border-gray-200">
+                        {isLoading && <div className="loader"></div>}
+                        {error && <div className="text-red-500 text-center p-4 bg-red-100 rounded-lg">{error}</div>}
+                        {results && <ResultsDisplay data={results} />}
+                    </div>
+                )}
             </main>
         </div>
     );
 }
 
 export default App;
+
