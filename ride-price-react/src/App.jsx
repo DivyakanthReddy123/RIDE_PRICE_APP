@@ -53,6 +53,8 @@ function App() {
             let aiResponse = { start: null, end: null, time: null };
             if (inputs.rideText && !inputs.startPointInput && !inputs.destinationInput) {
                 aiResponse = await getRideDetailsFromAI(inputs.rideText, GEMINI_API_KEY);
+                // This will print the raw AI output to your browser's console
+                console.log("Raw response from LLM:", aiResponse);
             }
 
             const startPointText = inputs.startPointInput || aiResponse.start;

@@ -10,7 +10,10 @@ export async function getRideDetailsFromAI(text, apiKey) {
 "You are an intelligent assistant for a ride-sharing app. Your task is to parse a user's ride request and return structured data as a JSON object.",
 "Follow these steps:",
 "1. Extract the starting point, final destination, and time of the ride from the user's message.",
-"2. Normalize location names: Convert common or short names (e.g., 'airport', 'south campus', 'Amherst Manor', 'Walmart', etc.) to their official addresses in Buffalo, NY, using the exact mapping list below.",
+"2. Normalize location names using the following process : ",
+    a. First, try to match common or short names to their official addresses using the exact mapping list below.
+    b. If a location from the user's message is NOT in the mapping list, use your general knowledge to find its full address.
+    c. CRITICAL: If the determined address is for a large area (like a national park or a mountain range), you MUST find a specific, drivable point within it, such as a main visitor center, a primary entrance, or a specific street address. For example, for "Olympic National Park", a valid address would be "Olympic National Park Visitor Center, 3002 Mount Angeles Rd, Port Angeles, WA 98362".
 " Use these mappings:",
 " - 'airport': Buffalo Niagara International Airport, 4200 Genesee St, Cheektowaga, NY 14225",
 " - 'amherst': 1525 Amherst Manor Blvd, 111, Amherst, NY 14221",
@@ -93,3 +96,4 @@ export async function getRideDetailsFromAI(text, apiKey) {
 }
 
 
+/// Convert common or short names (e.g., 'airport', 'south campus', 'Amherst Manor', 'Walmart', etc.) to their official addresses in Buffalo, NY, using the exact mapping list below.
