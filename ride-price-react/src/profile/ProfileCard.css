@@ -135,7 +135,7 @@
   /* transform: translateX(-50%) scale(1.8); */   /*for divya.png */ 
   /* bottom: 40px; */ /*for divya.png */
   transform: translateX(-50%) scale(1.0);
-  bottom: -137.5px;
+  bottom: -97.5px;
   opacity: calc(1.75 - var(--pointer-from-center));
 }
 
