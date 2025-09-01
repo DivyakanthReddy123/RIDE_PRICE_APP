@@ -131,7 +131,7 @@
 .pc-avatar-content .avatar {
   width: 100%;
   position: absolute;
-  left: 45%;
+  left: 40.5%;
   /* transform: translateX(-50%) scale(1.8); */   /*for divya.png */ 
   /* bottom: 40px; */ /*for divya.png */
   transform: translateX(-50%) scale(1.0);
