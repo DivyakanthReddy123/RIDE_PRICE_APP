@@ -9,7 +9,7 @@ const MyProfile = () => (
     title=" AI Developer , NY     "
     handle="divyakanthreddy"
     status="Online"
-    contactText="Contact Me"
+    contactText="クリシュナ "
     avatarUrl="/src/assets/divya.png"
     showUserInfo={true}
     enableTilt={true}
