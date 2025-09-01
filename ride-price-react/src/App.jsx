@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import InputForm from './components/InputForm';
 import ResultsDisplay from './components/ResultsDisplay';
 import { getRideDetailsFromAI } from './api';
+import MyProfile from './profile/MyProfile';
 
 // IMPORTANT: Access environment variables for API keys
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
@@ -138,8 +139,13 @@ function App() {
                         {results && <ResultsDisplay data={results} />}
                     </div>
                 )}
+        <div className="mt-8">
+                 <MyProfile />
+        </div>
             </main>
         </div>
+
+        
     );
 }
 
