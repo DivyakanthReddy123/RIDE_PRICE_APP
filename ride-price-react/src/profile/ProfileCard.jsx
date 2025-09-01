@@ -24,7 +24,7 @@ const easeInOutCubic = x =>
   x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 
 const ProfileCardComponent = ({
-  avatarUrl = '/divya.png',
+  avatarUrl = '/divya1.png',
   iconUrl,
   grainUrl,
   behindGradient,
@@ -256,7 +256,7 @@ const ProfileCardComponent = ({
           <div className="pc-shine" />
           <div className="pc-glare" />
           <div className="pc-content pc-avatar-content">
-          <img className="avatar" src="/divya.png" alt="Divyakanth avatar"
+          <img className="avatar" src="/divya1.png" alt="Divyakanth avatar"
               loading="lazy"
             />
             {showUserInfo && (
