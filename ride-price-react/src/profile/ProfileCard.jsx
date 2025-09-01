@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 import './ProfileCard.css';
-import divyaImg from '../assets/divya.png';
 
 
 const DEFAULT_BEHIND_GRADIENT =
@@ -25,7 +24,7 @@ const easeInOutCubic = x =>
   x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 
 const ProfileCardComponent = ({
-  avatarUrl = divyaImg,
+  avatarUrl = '/divya.png',
   iconUrl,
   grainUrl,
   behindGradient,
@@ -257,10 +256,7 @@ const ProfileCardComponent = ({
           <div className="pc-shine" />
           <div className="pc-glare" />
           <div className="pc-content pc-avatar-content">
-            <img
-              className="avatar"
-              src={avatarUrl}
-              alt={`${name} avatar`}
+          <img className="avatar" src="/divya.png" alt="Divyakanth avatar"
               loading="lazy"
             />
             {showUserInfo && (

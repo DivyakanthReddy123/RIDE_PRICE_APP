@@ -10,7 +10,7 @@ const MyProfile = () => (
     handle="divyakanthreddy"
     status="Online"
     contactText="クリシュナ "
-    avatarUrl="/src/assets/divya.png"
+    avatarUrl="/divya.png"
     showUserInfo={true}
     enableTilt={true}
     enableMobileTilt={false}
