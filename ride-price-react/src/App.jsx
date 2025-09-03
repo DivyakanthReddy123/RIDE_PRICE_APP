@@ -351,8 +351,12 @@ function App() {
                 const rows = dmResult.rows;
 
                 const homeToStart = metersToMiles(rows[0].elements[0].distance.value);
-                const startToEnd = metersToMiles(rows[1].elements[1].distance.value);
+                const startToEnd = distanceInMiles ;
                 const endToHome = metersToMiles(rows[2].elements[2].distance.value);
+
+                console.log(homeToStart)
+                console.log(startToEnd)
+                console.log(endToHome)
 
                 totalMilesWithHome = homeToStart + startToEnd + endToHome;
                 if (inputs.roundTripCheck) totalMilesWithHome *= 2;
@@ -383,6 +387,8 @@ function App() {
                 myGasCost, // new cost with home legs
                 totalMilesWithHome,
             };
+             
+            console.log(tripDistance)
 
             setResults({ rideDetails, prices, directionsResult });
         } catch (err) {
